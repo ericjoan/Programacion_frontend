@@ -36,19 +36,21 @@ const App = () => {
     fetchCocktails();
   }, []);
 
-  // En el bloque return, se define la estructura y el contenido que se mostrará en la interfaz de usuario. 
-  // En este caso, se muestra un encabezado <h1> con el texto "Cocktails available" y una lista <ul> que se crea utilizando el método map en el array cocktails. 
-  // Para cada cóctel en cocktails, se crea un elemento de lista <li> con el nombre del cóctel (cocktail.strDrink). 
-  // Es importante asignar una clave key única a cada elemento de la lista para ayudar a React a optimizar las actualizaciones de la interfaz de usuario.
+  // En el bloque return, se define la estructura y el contenido que se mostrará en la interfaz de usuario lo que se renderiza en el navegador. 
+  // este bloque de código crea un encabezado principal seguido de una lista de cocktails. 
+  // Cada cocktail se muestra con su nombre, imagen e instrucciones de preparación. 
+  // Estos elementos se generan dinámicamente utilizando el método map para recorrer el array de cocktails obtenidos de la API
 
   return (
     <div>
-      <h1>Cocktails available</h1>
-      <ul>
-        {cocktails.map(cocktail => (
-          <li key={cocktail.idDrink}>{cocktail.strDrink}</li>
-        ))}
-      </ul>
+      <h1>Cocktail Landing Page</h1>
+      {cocktails.map(cocktail => (
+        <div key={cocktail.idDrink}>
+          <h2>{cocktail.strDrink}</h2>
+          <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+          <p>{cocktail.strInstructions}</p>
+        </div>
+      ))}
     </div>
   );
 };
